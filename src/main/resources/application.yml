@@ -1,0 +1,22 @@
+server:
+  port: ${PORT:8080}
+  shutdown: graceful
+springdoc:
+  swagger-ui:
+    path: /
+  show-actuator: true
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: customer-service
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/${spring.application.name}}
+      auto-index-creation: true
+  cloud:
+    stream:
+      kafka:
+        binder:
+          auto-create-topics: false
+          brokers: ${KAFKA_BROKERS:localhost:9092}
